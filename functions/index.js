@@ -29,7 +29,11 @@ app.post("/webhook", async (req, res) => {
         case "text":
           if (event.message.text === "Hello") {
             await util.reply(event.replyToken, template.text);
-          } else {
+          }
+          else if (event.message.text === "pm2.5") {
+            await util.reply(event.replyToken, template.textinput("Checking"));
+          }  
+          else {
             await util.postToDialogflow(req);
           }
           break;
